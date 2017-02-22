@@ -54,22 +54,24 @@ for row in range(num):
 
 print "爬山法查找最短路径："
 ### 参数：最小路径的最后一个节点和邻域
-def valSum(curnode,nextnodeList):
+def valHillClimbSum(curnode,nextnodeList):
 
     if nextnodeList == None or len(nextnodeList) < 1 :
         print "empty"
         return 0
 
-    mincost = sys.maxint
+    maxcost = sys.maxint
+
     retnode = 0
-
     for node in nextnodeList:
-	if arr[curnode][node] < mincost:
-	    mincost = arr[curnode][node]	
-	    retnode = node
+  #     print "curnode : ",curnode ," node: " ,node ," mincost : ",mincost 
+       if arr[curnode][node] < maxcost :
+          maxcost = arr[curnode][node]
+          retnode = node
+       else:
+          return (retnode,maxcost)
     
-    return (retnode,mincost)
-
+    return (retnode,maxcost)
 indexList = [ i for i in range(num)]  ### 原始的节点序列
 selectedList = []  ## 选择好的元素
 
